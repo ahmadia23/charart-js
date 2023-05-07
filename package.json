@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/node": "^20.1.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "pg": "^8.10.0",
+    "pg-promise": "^11.4.3"
+  },
+  "scripts": {
+    "start": "nodemon ./dist/app",
+    "test": "vitest --globals",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@vitest/coverage-c8": "^0.31.0",
+    "nodemon": "^2.0.22",
+    "vitest": "^0.31.0"
+  },
+  "name": "text-analyzer",
+  "version": "1.0.0",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
