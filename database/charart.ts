@@ -1,4 +1,7 @@
-const Pool = require("pg").Pool;
+import pg from "pg";
+import { queryResult } from "pg-promise";
+const Pool = pg.Pool;
+
 const pool = new Pool({
   user: "ahmadou",
   host: "localhost",
@@ -7,4 +10,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-export default pool;
+export const db = {
+  query: (text: string, params: [], cb: () => {}) =>
+    pool.query(text, params, cb),
+};

@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 const app = express();
 
-import charactersRoutes from "./routes/characters";
+import charactersRoutes from "./routes/characters.js";
 
 app.use(charactersRoutes);
 app.get("/", (req, res) => {
