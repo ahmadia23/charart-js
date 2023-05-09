@@ -24,6 +24,4 @@ export class Character {
     this.popularity = popularity;
     this.image = image;
   }
-
-  static getCharacters: (db: db) => {};
 }
