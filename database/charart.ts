@@ -11,6 +11,6 @@ const pool = new Pool({
 });
 
 export const db = {
-  query: (text: string, params: [], cb: () => {}) =>
+  query: (text: string, params: any[], cb: (err: {}, result: {}) => void) =>
     pool.query(text, params, cb),
 };
