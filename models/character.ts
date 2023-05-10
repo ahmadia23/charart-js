@@ -1,3 +1,4 @@
+import { QueryResult } from "pg";
 import { db } from "../database/charart.js";
 
 export class Character {
@@ -23,27 +24,25 @@ export class Character {
     this.userId = userId;
   }
 
-  getCharacters(): void {
-    return db.query("SELECT * FROM characters", [], (err: {}, resuls: {}) => {
-      (err: {}, result: {}) => {
-        if (err) {
-          console.log(err);
-        }
-        console.log(result);
-      };
-    });
+  static async getAll(): Promise<QueryResult> {
+    const res = await db.query("SELECT * FROM characters", []);
+    return res;
   }
 
-  protected saveCharacter(): void {
-    db.query(
-      "INSERT INTO characters (name, history, image, user_id) VALUES ($1, $2, $3, $4)",
-      [this.name, this.history, this.image, this.userId],
-      (err: {}, result: {}) => {
-        if (err) {
-          console.log(err);
-        }
-        console.log(result);
-      }
-    );
+  protected save(): void {
+    // db.query(
+    //   "INSERT INTO characters (name, history, image, user_id) VALUES ($1, $2, $3, $4)",
+    //   [this.name, this.history, this.image, this.userId],
+    //   (err: {}, result: result) => {
+    //     if (err) {
+    //       console.log(err);
+    //     }
+    //     console.log(result.rows);
+    //   }
+    // );
   }
+
+  // getCharacter(id: Number): void {
+
+  // }
 }

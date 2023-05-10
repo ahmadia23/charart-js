@@ -1,17 +1,13 @@
 import express from "express";
 import cors from "cors";
-const app = express();
+import { charactersRoutes } from "./routes/characters.js";
 
-import charactersRoutes from "./routes/characters.js";
+const app = express();
 
 app.use(charactersRoutes);
 app.get("/", (req, res) => {
   res.send("hello world");
 });
-
-export const add = (a: number, b: number): string => {
-  return (a + b).toString();
-};
 
 app.listen(3000, () => {
   console.log(`Example app listening on port ${3000}`);

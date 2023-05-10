@@ -11,6 +11,11 @@ const pool = new Pool({
 });
 
 export const db = {
-  query: (text: string, params: any[], cb: (err: {}, result: {}) => void) =>
-    pool.query(text, params, cb),
+  async query(text: string, params: []) {
+    const start = Date.now();
+    const res = await pool.query(text, params);
+    const duration = Date.now() - start;
+    console.log("executed query", { text, duration, rows: res.rowCount });
+    return res;
+  },
 };
