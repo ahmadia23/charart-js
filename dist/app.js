@@ -1,6 +1,6 @@
 import express from "express";
-const app = express();
 import { charactersRoutes } from "./routes/characters.js";
+const app = express();
 app.use(charactersRoutes);
 app.get("/", (req, res) => {
     res.send("hello world");

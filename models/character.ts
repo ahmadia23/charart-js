@@ -29,20 +29,25 @@ export class Character {
     return res;
   }
 
-  protected save(): void {
-    // db.query(
-    //   "INSERT INTO characters (name, history, image, user_id) VALUES ($1, $2, $3, $4)",
-    //   [this.name, this.history, this.image, this.userId],
-    //   (err: {}, result: result) => {
-    //     if (err) {
-    //       console.log(err);
-    //     }
-    //     console.log(result.rows);
-    //   }
-    // );
+  protected async save(): Promise<QueryResult> {
+    const result = await db.query(
+      "INSERT INTO characters (name, history, image, user_id) VALUES ($1, $2, $3, $4)",
+      [this.name, this.history, this.image, this.userId]
+    );
+    return result;
   }
 
-  // getCharacter(id: Number): void {
+  static async getOne(id: Number): Promise<QueryResult> {
+    const result = await db.query("SELECT * FROM characters WHERE id=$1", [id]);
+    return result;
+  }
 
+  // protected async update(id: Number): Promise<QueryResult> {
+  //   const result = await db.query("UPDATE ")
   // }
+
+  protected async delete(id: Number): Promise<QueryResult> {
+    const result = await db.query("DELETE * FROM characters WHERE id=$1", [id]);
+    return result;
+  }
 }

@@ -11,7 +11,7 @@ const pool = new Pool({
 });
 
 export const db = {
-  async query(text: string, params: []) {
+  async query(text: string, params: (string | Number)[]) {
     const start = Date.now();
     const res = await pool.query(text, params);
     const duration = Date.now() - start;

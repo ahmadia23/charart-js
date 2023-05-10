@@ -8,4 +8,6 @@ router.get("/", (req, res, next) => {
   res.json({ dragonBall: "supaPowerda" });
 });
 
+router.post("character");
+
 export const charactersRoutes = router;
